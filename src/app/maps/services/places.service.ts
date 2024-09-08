@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class PlacesService {
 
-  public useLocation?: [number, number];
+  public userLocation?: [number, number];
 
   get isUserLocationReady(): boolean{
-    return !!this.useLocation;
+    return !!this.userLocation;
   }
 
   constructor() {
@@ -20,8 +20,8 @@ export class PlacesService {
 
         navigator.geolocation.getCurrentPosition(
           ({ coords }) => {
-            this.useLocation = [ coords.longitude, coords.latitude ];
-            resolve( this.useLocation );
+            this.userLocation = [ coords.longitude, coords.latitude ];
+            resolve( this.userLocation );
           },
           ( err ) => {
             alert('No se pudo obtener la geolocalización.');

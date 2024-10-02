@@ -1,16 +1,27 @@
-<div class="alert alert-primary mt-2 text-center">
-  <h6>Cargando</h6>
-  <span>Espere por favor...</span>
-</div>
 
-<ul class="list-group mt-2">
-  <li class="list-group-item list-group-item-action pointer" >
-    <h6>Lugar</h6>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere autem soluta atque nesciunt esse dolor eaque odio eos possimus rerum sequi repudiandae veritatis non magnam fugiat vitae quae, a cumque.
-    </p>
-    <button class="btn btn-sm btn-outline-primary">
-      Direcciones
-    </button>
-  </li>
-</ul>
+@if (isLoadingPlaces) {
+  <div class="alert alert-primary mt-2 text-center">
+    <h6>Cargando</h6>
+    <span>Espere por favor...</span>
+  </div>
+}
+
+@if (places.length > 0) {
+  <ul class="list-group mt-2">
+
+    @for (place of places; track $index) {
+    <li
+      class="list-group-item list-group-item-action pointer"
+      (click)="flyTo( place )"
+      >
+      <h6>{{ place.properties.name }}</h6>
+      <p>
+        {{ place.properties.name }}
+      </p>
+      <button class="btn btn-sm btn-outline-primary">
+        {{ place.properties.full_address }}
+      </button>
+    </li>
+  }
+  </ul>
+}

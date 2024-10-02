@@ -52,8 +52,6 @@ export class PlacesService {
         }
       } )
         .subscribe( resp => {
-          console.log( resp.features );
-
           this.isLoadingPlaces = false;
           this.places = resp.features;
 
